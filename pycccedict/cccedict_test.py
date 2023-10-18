@@ -36,5 +36,12 @@ class CcCedictTest(unittest.TestCase):
             for field in ['definitions', 'pinyin', 'simplified', 'traditional']:
                 self.assertIn(field, entry)
 
+    def test_get_entries(self):
+        """Tests get_entries."""
+        entries = self.cccedict.get_entries()
+        for entry in entries:
+            for field in ['definitions', 'pinyin', 'simplified', 'traditional']:
+                self.assertIn(field, entry)
+
 if __name__ == "__main__":
     unittest.main()

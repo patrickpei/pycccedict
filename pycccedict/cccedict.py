@@ -42,6 +42,10 @@ class CcCedict:
 
         return None
 
+    def get_entries(self) -> List:
+        """Gets all entries."""
+        return self.entries
+
     def _get_field(self, field: str, chinese: str) -> Union[str, List, None]:
         """Gets field."""
         entry = self.get_entry(chinese)

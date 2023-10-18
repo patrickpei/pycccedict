@@ -47,6 +47,11 @@ cccedict.get_entry('猫')
     ]
 }
 ```
+### get_entries
+```python
+>>> cccedict.get_entries()[:2]
+[{'traditional': '%', 'simplified': '%', 'pinyin': 'pa1', 'definitions': ['percent (Tw)']}, {'traditional': '2019冠狀病毒病', 'simplified': '2019冠状病毒病', 'pinyin': 'er4 ling2 yi1 jiu3 guan1 zhuang4 bing4 du2 bing4', 'definitions': ['COVID-19, the coronavirus disease identified in 2019']}]
+```
 ### get_traditional
 ```python
 >>> cccedict.get_traditional('猫')
