@@ -2,7 +2,7 @@
 
 import gzip
 from pathlib import Path
-from typing import TextIO
+from typing import Dict, List, Optional, TextIO, Union
 
 class CcCedict:
     """CC-CEDICT."""
@@ -12,23 +12,23 @@ class CcCedict:
         with gzip.open(path, mode='rt') as file:
             self._parse_file(file)
 
-    def get_definitions(self, chinese: str) -> list | None:
+    def get_definitions(self, chinese: str) -> Optional[List]:
         """Gets definitions."""
         return self._get_field(field='definitions', chinese=chinese)
 
-    def get_pinyin(self, chinese: str) -> list | None:
+    def get_pinyin(self, chinese: str) -> Optional[str]:
         """Gets pinyin."""
         return self._get_field(field='pinyin', chinese=chinese)
 
-    def get_simplified(self, chinese: str) -> list | None:
+    def get_simplified(self, chinese: str) -> Optional[str]:
         """Gets simplified."""
         return self._get_field(field='simplified', chinese=chinese)
 
-    def get_traditional(self, chinese: str) -> list | None:
+    def get_traditional(self, chinese: str) -> Optional[str]:
         """Gets traditional."""
         return self._get_field(field='traditional', chinese=chinese)
 
-    def get_entry(self, chinese: str) -> dict | None:
+    def get_entry(self, chinese: str) -> Optional[Dict]:
         """Gets an entry."""
         # Check simplified.
         if chinese in self.simplified_to_index:
@@ -42,7 +42,7 @@ class CcCedict:
 
         return None
 
-    def _get_field(self, field: str, chinese: str) -> str | list | None:
+    def _get_field(self, field: str, chinese: str) -> Union[str, List, None]:
         """Gets field."""
         entry = self.get_entry(chinese)
         if entry is None:
@@ -71,7 +71,7 @@ class CcCedict:
             self.traditional_to_index[traditional] = i
             i += 1
 
-    def _parse_line(self, line: str) -> dict | None:
+    def _parse_line(self, line: str) -> Optional[Dict]:
         # Skip comments.
         if line.startswith('#'):
             return None
