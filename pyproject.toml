@@ -5,6 +5,8 @@ description = "CC-CEDIT in Python"
 authors = ["Patrick Pei <14530807+patrickpei@users.noreply.github.com>"]
 license = "CC BY-SA 4.0"
 readme = "README.md"
+repository = "https://github.com/patrickpei/pycccedict"
+documentation = "https://github.com/patrickpei/pycccedict#api"
 
 [tool.poetry.dependencies]
 python = "^3.8"
